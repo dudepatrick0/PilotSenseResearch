@@ -339,7 +339,7 @@
         async function loadAllData() {
             try {
                 // Check-ins
-                var checkInsSnap = await db.collection('checkInRecords').orderBy('checkInDate', 'desc').limit(1000).get();
+               var checkInsSnap = await db.collection('checkInRecords').limit(1000).get();
                 allCheckIns = checkInsSnap.docs.map(function(doc, index) {
                     var data = doc.data();
                     return {
@@ -379,7 +379,7 @@
                 });
 
                 // Enhanced Post-Flight Surveys (new detailed data)
-                var enhancedSnap = await db.collection('postFlightSummaries').get();
+               var enhancedSnap = await db.collection('postFlightSummaries').get();
                 allEnhancedSurveys = enhancedSnap.docs.map(function(doc, index) {
                     var data = doc.data();
                     return {
